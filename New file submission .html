@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duka Property Management | Employee Hiring Package</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --text: #1a202c;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg-soft: #fafafa;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      min-height: 100vh;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .document-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .header-section {
+      position: relative;
+      height: 390px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.02) 30%, transparent 45%),
+        linear-gradient(135deg, #0f172a 0%, #172554 38%, #1e3a8a 70%, #334155 100%);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .header-section::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 7px;
+      background: linear-gradient(90deg, #c8a96b 0%, #f4e3b2 22%, #b78a42 48%, #f7ebc8 74%, #9f6f2d 100%);
+      box-shadow: 0 -1px 12px rgba(244, 227, 178, 0.28);
+      z-index: 4;
+    }
+
+    .skyline-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to top, rgba(2, 6, 23, 0.88) 0%, rgba(15, 23, 42, 0.52) 42%, rgba(255,255,255,0.06) 100%),
+        url('https://images.pexels.com/photos/6998/city-cityscape-amarpreet-kaur.jpg?auto=compress&cs=tinysrgb&w=1800&h=1000&dpr=2');
+      background-size: cover;
+      background-position: center bottom;
+      transform: scale(1.04);
+      filter: saturate(1.02) contrast(1.1) brightness(0.92);
+    }
+
+    .header-overlay {
+      position: absolute;
+      inset: 0;
+      padding: 28px 50px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 2;
+    }
+
+    .header-topbar { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+
+    .brand-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 18px;
+      border: 1px solid rgba(244, 227, 178, 0.28);
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+      backdrop-filter: blur(10px);
+      color: #f8fafc;
+      font-size: 0.78em;
+      font-weight: 700;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      box-shadow: 0 12px 30px rgba(2, 6, 23, 0.22);
+    }
+
+    .brand-chip-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff6d8 0%, #d7b36a 55%, #9f6f2d 100%);
+      box-shadow: 0 0 0 4px rgba(215, 179, 106, 0.16);
+    }
+
+    .header-card {
+      max-width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 34px 36px;
+      border: 1px solid rgba(244, 227, 178, 0.18);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.06) 100%);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 28px 80px rgba(2, 6, 23, 0.34), inset 0 1px 0 rgba(255,255,255,0.16);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 32px;
+      right: 32px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(244, 227, 178, 0.7) 50%, transparent 100%);
+    }
+
+    .company-info { max-width: 640px; position: relative; z-index: 1; }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(244, 227, 178, 0.24);
+      background: rgba(255,255,255,0.08);
+      color: #f4e3b2;
+      font-size: 0.73em;
+      font-weight: 700;
+      letter-spacing: 1.9px;
+      text-transform: uppercase;
+    }
+
+    .company-info h1 {
+      color: #ffffff;
+      font-size: 3.2em;
+      line-height: 1.02;
+      font-weight: 800;
+      letter-spacing: -1.35px;
+      margin-bottom: 12px;
+      text-shadow: 0 12px 34px rgba(0, 0, 0, 0.30);
+    }
+
+    .company-info .tagline {
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 0.98em;
+      font-weight: 400;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+    }
+
+    .document-meta {
+      min-width: 280px;
+      text-align: right;
+      color: white;
+      padding-left: 28px;
+      border-left: 1px solid rgba(244, 227, 178, 0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .doc-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: 0.74em;
+      text-transform: uppercase;
+      letter-spacing: 1.9px;
+      opacity: 0.96;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(244,227,178,0.20) 0%, rgba(183,138,66,0.13) 100%);
+      color: #fff4d6;
+      border: 1px solid rgba(244, 227, 178, 0.18);
+    }
+
+    .doc-title { font-size: 1.86em; line-height: 1.14; font-weight: 700; letter-spacing: 0.2px; color: #ffffff; }
+    .doc-id { margin-top: 14px; font-size: 0.82em; opacity: 0.84; letter-spacing: 1.2px; font-family: monospace; color: #e2e8f0; }
+
+    .form-container { padding: 50px; }
+    .section { margin-bottom: 50px; page-break-inside: avoid; }
+    .section-header { display: flex; align-items: center; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 2px solid var(--border); }
+    .section-number {
+      width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.05em; margin-right: 15px; flex-shrink: 0;
+    }
+    .section-title { font-size: 1.4em; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
+    .section-subtitle { color: var(--muted); font-size: 0.95em; margin-top: 3px; font-weight: 400; }
+
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px; }
+    .sub-grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; margin-top: 15px; }
+    .form-group { display: flex; flex-direction: column; min-width: 0; }
+    .form-group.full-width { grid-column: 1 / -1; }
+
+    label {
+      font-weight: 600; color: #374151; margin-bottom: 8px; font-size: 0.85em;
+      text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 5px;
+    }
+    .required { color: #dc2626; font-weight: 700; }
+
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea {
+      width: 100%; padding: 14px 16px; border: 2px solid var(--border); border-radius: 8px; font-size: 1em;
+      font-family: inherit; transition: all 0.2s ease; background: var(--bg-soft); color: #1f2937;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none; border-color: var(--primary-light); background: white; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    }
+
+    input::placeholder, textarea::placeholder { color: #9ca3af; }
+
+    select {
+      cursor: pointer; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center; padding-right: 40px;
+    }
+
+    .input-hint { font-size: 0.85em; color: #6b7280; margin-top: 6px; font-style: italic; }
+
+    .security-section {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border: 2px solid var(--primary-light); border-radius: 12px; padding: 30px; margin: 30px 0; position: relative; overflow: hidden;
+    }
+    .security-section::before { content: '🔐'; position: absolute; top: 20px; right: 20px; font-size: 3em; opacity: 0.1; }
+    .security-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+    .security-badge {
+      background: var(--primary); color: white; padding: 6px 16px; border-radius: 20px;
+      font-size: 0.75em; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .security-title { font-size: 1.3em; font-weight: 700; color: var(--primary); }
+
+    .alert-box {
+      background: #fffbeb; border-left: 5px solid #f59e0b; padding: 20px; border-radius: 0 8px 8px 0; margin-top: 20px; display: flex; gap: 15px;
+    }
+    .alert-icon { font-size: 1.5em; color: #f59e0b; flex-shrink: 0; }
+    .alert-content h4 { color: #92400e; font-weight: 700; margin-bottom: 8px; font-size: 1.05em; }
+    .alert-content p { color: #78350f; font-size: 0.95em; line-height: 1.6; }
+
+    .benefits-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; margin-top: 15px; }
+    .checkbox-card {
+      border: 2px solid #e5e7eb; border-radius: 10px; padding: 20px; cursor: pointer; transition: all 0.2s;
+      display: flex; align-items: center; gap: 12px; background: white;
+    }
+    .checkbox-card input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--primary); }
+    .checkbox-card label { margin: 0; text-transform: none; font-weight: 500; font-size: 0.95em; cursor: pointer; color: #374151; }
+    .checkbox-card.active { border-color: var(--primary-light); background: #eff6ff; }
+
+    .signature-container { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 20px; }
+    .signature-box {
+      border: 2px solid var(--border); border-radius: 10px; height: 180px; background: #fafafa;
+      display: flex; align-items: center; justify-content: center; color: #9ca3af; font-style: italic;
+      cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .signature-box.signed { border-color: var(--primary-light); background: #ffffff; color: #1f2937; }
+    .signature-line { position: absolute; bottom: 40px; left: 50px; right: 50px; height: 2px; background: #1f2937; }
+    .signature-label {
+      position: absolute; bottom: 15px; left: 50px; font-size: 0.85em; color: #6b7280;
+      font-style: normal; text-transform: uppercase; letter-spacing: 1px;
+    }
+
+    .form-footer {
+      margin-top: 50px; padding-top: 30px; border-top: 2px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; gap: 20px;
+    }
+
+    .legal-checkbox {
+      display: flex; align-items: flex-start; gap: 12px; background: #fef3c7; padding: 20px;
+      border-radius: 10px; border: 1px solid #fcd34d;
+    }
+    .legal-checkbox input[type="checkbox"] { width: 24px; height: 24px; accent-color: var(--primary); margin-top: 2px; flex-shrink: 0; }
+    .legal-checkbox label { margin: 0; text-transform: none; font-weight: 500; color: #92400e; line-height: 1.6; font-size: 0.95em; }
+
+    .submit-btn, .admin-link {
+      background: var(--primary); color: white; border: none; padding: 18px 30px; font-size: 1em; font-weight: 700;
+      border-radius: 10px; cursor: pointer; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px;
+      box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.4); text-decoration: none; display: inline-block;
+    }
+    .admin-link { background: #0f172a; padding: 12px 18px; font-size: 0.85em; margin-left: 10px; }
+    .status-message {
+      margin-top: 16px; padding: 14px 16px; border-radius: 10px; font-weight: 600; display: none;
+    }
+    .status-success { display:block; background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; }
+    .status-error { display:block; background:#fef2f2; color:#991b1b; border:1px solid #fecaca; }
+
+    @media (max-width: 900px) {
+      .sub-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .benefits-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 768px) {
+      .header-section { height: auto; min-height: 330px; }
+      .header-overlay { padding: 18px 18px 22px; }
+      .header-topbar { flex-direction: column; align-items: flex-start; }
+      .header-card { flex-direction: column; align-items: flex-start; padding: 24px 20px; border-radius: 18px; }
+      .company-info h1 { font-size: 2.18em; }
+      .company-info .tagline { font-size: 0.86em; letter-spacing: 1.4px; }
+      .document-meta {
+        min-width: 0; width: 100%; text-align: left; padding-left: 0; border-left: none;
+        border-top: 1px solid rgba(244, 227, 178, 0.18); padding-top: 18px;
+      }
+      .form-container { padding: 30px 20px; }
+      .form-grid, .benefits-grid, .signature-container, .sub-grid-4 { grid-template-columns: 1fr; }
+      .form-footer { flex-direction: column; align-items: stretch; }
+      .submit-btn, .admin-link { width: 100%; text-align: center; margin-left: 0; margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="document-wrapper">
+    <header class="header-section">
+      <div class="skyline-bg"></div>
+      <div class="header-overlay">
+        <div class="header-topbar">
+          <div class="brand-chip"><span class="brand-chip-dot"></span> Premium Corporate Portfolio</div>
+        </div>
+        <div class="header-card">
+          <div class="company-info">
+            <div class="eyebrow">Executive Human Resources Documentation</div>
+            <h1>Duka Property Management</h1>
+            <div class="tagline">Luxury Property Operations • Executive Hiring Package</div>
+          </div>
+          <div class="document-meta">
+            <div class="doc-label">Private HR Portfolio Record</div>
+            <div class="doc-title">Employee Hiring Package</div>
+            <div class="doc-id">REF: DPM-HR-2024-001</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <form class="form-container" id="hiringForm">
+      <section class="section">
+        <div class="section-header"><div class="section-number">01</div><div><div class="section-title">Personal Information</div><div class="section-subtitle">Legal identification and contact details</div></div></div>
+        <div class="form-grid">
+          <div class="form-group"><label for="firstName">Legal First Name <span class="required">*</span></label><input id="firstName" name="first_name" type="text" required /></div>
+          <div class="form-group"><label for="lastName">Legal Last Name <span class="required">*</span></label><input id="lastName" name="last_name" type="text" required /></div>
+          <div class="form-group"><label for="email">Personal Email <span class="required">*</span></label><input id="email" name="email" type="email" required /></div>
+          <div class="form-group"><label for="phone">Primary Phone <span class="required">*</span></label><input id="phone" name="phone" type="tel" required /></div>
+          <div class="form-group"><label for="dob">Date of Birth <span class="required">*</span></label><input id="dob" name="date_of_birth" type="date" required /></div>
+          <div class="form-group"><label for="sin">Social Insurance Number (SIN) <span class="required">*</span></label><input id="sin" name="sin" type="text" required /><div class="input-hint">Required for payroll and tax purposes</div></div>
+          <div class="form-group full-width">
+            <label for="resAddress">Residential Address <span class="required">*</span></label>
+            <input id="resAddress" name="residential_address" type="text" required />
+            <div class="sub-grid-4">
+              <input name="residential_city" type="text" placeholder="City" required />
+              <select name="residential_province" required><option value="">Province</option><option>Ontario</option><option>British Columbia</option><option>Alberta</option><option>Quebec</option><option>Manitoba</option></select>
+              <input name="residential_postal_code" type="text" placeholder="Postal Code" required />
+              <input name="residential_country" type="text" value="Canada" readonly style="background:#f3f4f6;" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header"><div class="section-number">02</div><div><div class="section-title">Employment Details</div><div class="section-subtitle">Role and compensation information</div></div></div>
+        <div class="form-grid">
+          <div class="form-group"><label for="position">Position Title <span class="required">*</span></label><input id="position" name="position_title" type="text" required /></div>
+          <div class="form-group"><label for="department">Department <span class="required">*</span></label><select id="department" name="department" required><option value="">Select Department</option><option>Residential Property Management</option><option>Commercial Property Management</option><option>Leasing & Tenant Relations</option><option>Facilities & Maintenance</option><option>Accounting & Finance</option><option>Human Resources</option><option>Legal & Compliance</option><option>Business Development</option></select></div>
+          <div class="form-group"><label for="employmentType">Employment Type <span class="required">*</span></label><select id="employmentType" name="employment_type" required><option value="">Select Type</option><option>Full-Time Permanent</option><option>Full-Time Contract</option><option>Part-Time</option><option>Casual</option><option>Internship</option></select></div>
+          <div class="form-group"><label for="startDate">Start Date <span class="required">*</span></label><input id="startDate" name="start_date" type="date" required /></div>
+          <div class="form-group"><label for="reportingTo">Reporting To <span class="required">*</span></label><input id="reportingTo" name="reporting_to" type="text" required /></div>
+          <div class="form-group"><label for="workLocation">Work Location <span class="required">*</span></label><select id="workLocation" name="work_location" required><option value="">Select Primary Location</option><option>DPM Head Office - Downtown Toronto</option><option>North York Operations Centre</option><option>Mississauga Branch</option><option>Scarborough Office</option><option>Remote/Hybrid</option><option>Field/On-Site</option></select></div>
+          <div class="form-group"><label for="salary">Annual Salary / Hourly Rate <span class="required">*</span></label><input id="salary" name="salary_or_rate" type="text" required /></div>
+          <div class="form-group"><label for="paySchedule">Pay Schedule <span class="required">*</span></label><select id="paySchedule" name="pay_schedule" required><option value="">Select Schedule</option><option>Bi-Weekly (26 pay periods)</option><option>Semi-Monthly (24 pay periods)</option><option>Monthly (12 pay periods)</option></select></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header"><div class="section-number">03</div><div><div class="section-title">Emergency Contact</div><div class="section-subtitle">Primary contact in case of workplace emergency</div></div></div>
+        <div class="form-grid">
+          <div class="form-group"><label for="emergencyName">Contact Name <span class="required">*</span></label><input id="emergencyName" name="emergency_contact_name" type="text" required /></div>
+          <div class="form-group"><label for="relationship">Relationship <span class="required">*</span></label><input id="relationship" name="emergency_relationship" type="text" required /></div>
+          <div class="form-group"><label for="emergencyPhone">Primary Phone <span class="required">*</span></label><input id="emergencyPhone" name="emergency_phone" type="tel" required /></div>
+          <div class="form-group"><label for="emergencyAltPhone">Alternative Phone</label><input id="emergencyAltPhone" name="emergency_alt_phone" type="tel" /></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header"><div class="section-number">04</div><div><div class="section-title">Secure Access Credentials</div><div class="section-subtitle">Building access fob delivery information</div></div></div>
+        <div class="security-section">
+          <div class="security-header"><span class="security-badge">High Security</span><h3 class="security-title">Electronic Access Fob Delivery Address</h3></div>
+          <p style="color:#475569; margin-bottom:20px;">Please provide the precise mailing address where your personalized electronic office access fob <strong>(with your full name printed on it)</strong> should be delivered via secure courier.</p>
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label for="fobAddress">Mailing Address for Access Fob <span class="required">*</span></label>
+              <input id="fobAddress" name="fob_address" type="text" required style="border-color:#3b82f6; background:white;" />
+              <div class="sub-grid-4">
+                <input name="fob_city" type="text" placeholder="City" required style="border-color:#3b82f6; background:white;" />
+                <select name="fob_province" required style="border-color:#3b82f6; background:white;"><option value="">Province</option><option>Ontario</option><option>British Columbia</option><option>Alberta</option><option>Quebec</option></select>
+                <input name="fob_postal_code" type="text" placeholder="Postal Code" required style="border-color:#3b82f6; background:white;" />
+                <input name="fob_country" type="text" value="Canada" readonly style="background:#f1f5f9;" />
+              </div>
+              <div class="input-hint" style="color:#3b82f6; margin-top:10px;">⚠️ Ensure this address is secure and accurate. P.O. Boxes are not accepted.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header"><div class="section-number">05</div><div><div class="section-title">Direct Deposit Authorization</div><div class="section-subtitle">Banking details for payroll processing</div></div></div>
+        <div class="form-grid">
+          <div class="form-group"><label for="bankName">Financial Institution</label><input id="bankName" name="financial_institution" type="text" /></div>
+          <div class="form-group"><label for="accountType">Account Type</label><select id="accountType" name="account_type"><option value="">Select Account Type</option><option>Chequing</option><option>Savings</option></select></div>
+          <div class="form-group"><label for="accountNumber">Account Number</label><input id="accountNumber" name="account_number" type="text" /></div>
+          <div class="form-group"><label for="transitNumber">Transit Number (5 digits)</label><input id="transitNumber" name="transit_number" type="text" maxlength="5" /></div>
+          <div class="form-group full-width"><label for="institutionNumber">Institution Number (3 digits)</label><input id="institutionNumber" name="institution_number" type="text" maxlength="3" /></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header"><div class="section-number">06</div><div><div class="section-title">Benefits Enrollment</div><div class="section-subtitle">Select your coverage options (Optional)</div></div></div>
+        <div class="benefits-grid">
+          <div class="checkbox-card"><input type="checkbox" id="health" name="benefits" value="Health Insurance" /><label for="health">Health Insurance</label></div>
+          <div class="checkbox-card"><input type="checkbox" id="dental" name="benefits" value="Dental Coverage" /><label for="dental">Dental Coverage</label></div>
+          <div class="checkbox-card"><input type="checkbox" id="vision" name="benefits" value="Vision Care" /><label for="vision">Vision Care</label></div>
+          <div class="checkbox-card"><input type="checkbox" id="life" name="benefits" value="Life Insurance" /><label for="life">Life Insurance</label></div>
+          <div class="checkbox-card"><input type="checkbox" id="rrsp" name="benefits" value="RRSP Matching" /><label for="rrsp">RRSP Matching</label></div>
+          <div class="checkbox-card"><input type="checkbox" id="hsa" name="benefits" value="Health Spending Account" /><label for="hsa">Health Spending Account</label></div>
+        </div>
+      </section>
+
+      <section class="section" style="margin-bottom:0;">
+        <div class="section-header"><div class="section-number">07</div><div><div class="section-title">Legal Acknowledgment</div><div class="section-subtitle">Authorization and electronic signature</div></div></div>
+        <div class="legal-checkbox" style="margin-bottom:30px;">
+          <input type="checkbox" id="legalAgree" name="legal_agreement" required />
+          <label for="legalAgree">I certify that all information provided is true and complete. I acknowledge the liability terms regarding the access fob and agree to company policies and confidentiality obligations.</label>
+        </div>
+        <div class="signature-container">
+          <div class="form-group" style="margin:0;">
+            <label for="signatureBox">Electronic Signature <span class="required">*</span></label>
+            <div class="signature-box" id="signatureBox" tabindex="0" role="button" aria-label="Click to sign">
+              <span class="signature-placeholder" style="z-index:1;">Click to sign</span>
+              <div class="signature-line"></div>
+              <div class="signature-label">Employee Signature</div>
+            </div>
+            <input type="hidden" name="signature_status" id="signatureStatus" required value="" />
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label for="dateSigned">Date Signed <span class="required">*</span></label>
+            <input id="dateSigned" name="date_signed" type="date" required style="height:60px;" />
+          </div>
+        </div>
+      </section>
+
+      <div class="form-footer">
+        <div style="color:#64748b; font-size:0.9em;">
+          <strong>Human Resources Department</strong><br />
+          Duka Property Management<br />
+          hr@dukaproperty.com | (416) 555-0199
+        </div>
+        <div>
+          <button type="submit" class="submit-btn">Submit Hiring Package</button>
+          <a class="admin-link" href="/admin.html">View Submissions</a>
+        </div>
+      </div>
+
+      <div id="statusMessage" class="status-message"></div>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('hiringForm');
+      const signatureBox = document.getElementById('signatureBox');
+      const signatureStatus = document.getElementById('signatureStatus');
+      const statusMessage = document.getElementById('statusMessage');
+      const checkboxCards = document.querySelectorAll('.checkbox-card');
+
+      function applyCheckboxState(card) {
+        const checkbox = card.querySelector('input[type="checkbox"]');
+        card.classList.toggle('active', checkbox.checked);
+      }
+
+      checkboxCards.forEach(card => {
+        const checkbox = card.querySelector('input[type="checkbox"]');
+        applyCheckboxState(card);
+        card.addEventListener('click', function (e) {
+          if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'LABEL') {
+            checkbox.checked = !checkbox.checked;
+            checkbox.dispatchEvent(new Event('change'));
+          }
+        });
+        checkbox.addEventListener('change', function () {
+          applyCheckboxState(card);
+        });
+      });
+
+      function signBox() {
+        if (signatureBox.classList.contains('signed')) return;
+        signatureBox.classList.add('signed');
+        signatureStatus.value = 'signed';
+        signatureBox.innerHTML = `
+          <svg width="300" height="100" viewBox="0 0 300 100" style="z-index:1;">
+            <path d="M20,75 Q60,18 110,58 T190,54 T280,42" stroke="#1f2937" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+          <div class="signature-line"></div>
+          <div class="signature-label">Employee Signature</div>
+        `;
+      }
+
+      signatureBox.addEventListener('click', signBox);
+      signatureBox.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          signBox();
+        }
+      });
+
+      function getFormPayload() {
+        const formData = new FormData(form);
+        const benefits = [];
+        form.querySelectorAll('input[name="benefits"]:checked').forEach(el => benefits.push(el.value));
+
+        const payload = Object.fromEntries(formData.entries());
+        payload.benefits = benefits;
+        payload.submitted_at_client = new Date().toISOString();
+        return payload;
+      }
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        statusMessage.className = 'status-message';
+        statusMessage.style.display = 'none';
+
+        if (!signatureStatus.value) {
+          statusMessage.textContent = 'Please complete the electronic signature before submitting.';
+          statusMessage.classList.add('status-error');
+          return;
+        }
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        try {
+          const response = await fetch('/api/submissions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(getFormPayload())
+          });
+
+          const result = await response.json();
+
+          if (!response.ok) throw new Error(result.error || 'Submission failed.');
+
+          statusMessage.textContent = `Submitted successfully. Reference ID: ${result.reference}`;
+          statusMessage.classList.add('status-success');
+          form.reset();
+          signatureStatus.value = '';
+          signatureBox.className = 'signature-box';
+          signatureBox.innerHTML = `
+            <span class="signature-placeholder" style="z-index:1;">Click to sign</span>
+            <div class="signature-line"></div>
+            <div class="signature-label">Employee Signature</div>
+          `;
+          checkboxCards.forEach(card => card.classList.remove('active'));
+          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        } catch (err) {
+          statusMessage.textContent = err.message || 'Unable to submit the form.';
+          statusMessage.classList.add('status-error');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
